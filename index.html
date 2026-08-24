@@ -1,0 +1,1610 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <script data-domain='us-news-hub.blogspot.com/vSsyCz' defer='defer' src='https://api.publytics.net/js/script.manual.min.js'/>
+<script>
+    window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
+    publytics(&#39;pageview&#39;);
+</script>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Watch Full Video</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html,
+body{
+  width:100%;
+  min-height:100%;
+  overflow-x:hidden;
+  font-family:'Lexend',Arial,sans-serif;
+  background:#0b0b0b;
+}
+
+/* =========================================
+   LANDING PAGE
+========================================= */
+
+.page-content{
+  width:100%;
+  min-height:100vh;
+  min-height:100dvh;
+
+  background:
+    radial-gradient(
+      circle at top,
+      #202020 0%,
+      #0d0d0d 45%,
+      #050505 100%
+    );
+
+  display:flex;
+  justify-content:center;
+}
+
+.app-content{
+  width:100%;
+  max-width:1050px;
+  min-height:100vh;
+  min-height:100dvh;
+
+  padding:28px 16px 24px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+/* =========================================
+   TITLE
+========================================= */
+
+.land-title{
+  color:#fff;
+  text-align:center;
+
+  font-size:21px;
+  line-height:1.4;
+  font-weight:650;
+
+  letter-spacing:.2px;
+
+  text-shadow:
+    0 2px 10px rgba(0,0,0,.7);
+}
+
+.decorate{
+  width:180px;
+  height:4px;
+
+  margin:13px auto 22px;
+
+  border-radius:20px;
+
+  background:
+    linear-gradient(
+      90deg,
+      transparent,
+      #ff1744,
+      #ff1744,
+      transparent
+    );
+
+  box-shadow:
+    0 0 20px rgba(255,23,68,.3);
+}
+
+/* =========================================
+   PLAYER AREA
+========================================= */
+
+.middle-bg{
+  width:100%;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+}
+
+.player-wrapper{
+  width:100%;
+  max-width:900px;
+
+  border-radius:14px;
+  overflow:hidden;
+
+  box-shadow:
+    0 20px 60px rgba(0,0,0,.65),
+    0 0 0 1px rgba(255,255,255,.04);
+}
+
+/* =========================================
+   FAKE PLAYER
+========================================= */
+
+.fake-player{
+  position:relative;
+
+  width:100%;
+  max-width:900px;
+
+  aspect-ratio:16 / 9;
+
+  background:#000;
+
+  overflow:hidden;
+
+  font-family:Arial,Helvetica,sans-serif;
+
+  user-select:none;
+}
+
+/* =========================================
+   BADGES
+========================================= */
+
+.live-badges{
+  position:absolute;
+
+  top:17px;
+  left:17px;
+
+  display:flex;
+  align-items:center;
+  gap:6px;
+
+  z-index:20;
+}
+
+.live-badge{
+  background:#ff1744;
+  color:#fff;
+
+  font-size:11px;
+  font-weight:800;
+
+  padding:5px 8px;
+
+  border-radius:4px;
+
+  line-height:1;
+
+  box-shadow:
+    0 2px 8px rgba(0,0,0,.3);
+}
+
+.views-badge{
+  display:flex;
+  align-items:center;
+  gap:4px;
+
+  background:rgba(20,20,20,.9);
+
+  color:#fff;
+
+  font-size:11px;
+  font-weight:700;
+
+  padding:5px 8px;
+
+  border-radius:4px;
+
+  line-height:1;
+}
+
+.views-badge svg{
+  width:12px;
+  height:12px;
+
+  fill:none;
+  stroke:#fff;
+  stroke-width:2;
+}
+
+/* =========================================
+   CENTER LOGO
+========================================= */
+
+.center-logo{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:175px;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  z-index:5;
+
+  pointer-events:none;
+
+  opacity:.9;
+}
+
+.center-logo img{
+  display:block;
+
+  width:100%;
+  height:auto;
+
+  max-height:65px;
+
+  object-fit:contain;
+}
+
+/* =========================================
+   PLAY BUTTON
+========================================= */
+
+.play-button{
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  transform:translate(-50%,-50%);
+
+  width:62px;
+  height:62px;
+
+  padding:0;
+
+  border:2px solid rgba(255,255,255,.9);
+
+  border-radius:50%;
+
+  background:rgba(0,0,0,.28);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  z-index:30;
+
+  transition:
+    transform .2s ease,
+    background .2s ease,
+    box-shadow .2s ease;
+
+  box-shadow:
+    0 0 0 9px rgba(255,255,255,.08),
+    0 8px 30px rgba(0,0,0,.45);
+}
+
+.play-button:hover{
+  transform:
+    translate(-50%,-50%)
+    scale(1.08);
+
+  background:rgba(255,255,255,.1);
+
+  box-shadow:
+    0 0 0 13px rgba(255,255,255,.1),
+    0 10px 35px rgba(0,0,0,.55);
+}
+
+.play-button svg{
+  width:29px;
+  height:29px;
+
+  fill:#fff;
+
+  margin-left:3px;
+}
+
+/* =========================================
+   PLAY PULSE
+========================================= */
+
+.play-button::before,
+.play-button::after{
+  content:"";
+
+  position:absolute;
+
+  top:50%;
+  left:50%;
+
+  width:62px;
+  height:62px;
+
+  border-radius:50%;
+
+  border:1px solid rgba(255,255,255,.18);
+
+  transform:
+    translate(-50%,-50%)
+    scale(.7);
+
+  animation:playerPulse 2s infinite;
+
+  pointer-events:none;
+}
+
+.play-button::after{
+  animation-delay:.8s;
+}
+
+@keyframes playerPulse{
+
+  0%{
+    opacity:.7;
+    transform:
+      translate(-50%,-50%)
+      scale(.7);
+  }
+
+  100%{
+    opacity:0;
+    transform:
+      translate(-50%,-50%)
+      scale(1.8);
+  }
+
+}
+
+/* =========================================
+   LOADING
+========================================= */
+
+.loading-screen{
+  position:absolute;
+
+  inset:0;
+
+  display:none;
+
+  align-items:center;
+  justify-content:center;
+
+  background:rgba(0,0,0,.55);
+
+  z-index:100;
+}
+
+.loading-spinner{
+  width:38px;
+  height:38px;
+
+  border:3px solid rgba(255,255,255,.25);
+
+  border-top-color:#fff;
+
+  border-radius:50%;
+
+  animation:
+    loadingSpin .7s linear infinite;
+}
+
+@keyframes loadingSpin{
+
+  to{
+    transform:rotate(360deg);
+  }
+
+}
+
+/* =========================================
+   MUTE
+========================================= */
+
+.mute-button{
+  position:absolute;
+
+  right:13px;
+  bottom:59px;
+
+  width:30px;
+  height:30px;
+
+  padding:5px;
+
+  border:0;
+
+  background:none;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  z-index:25;
+}
+
+.mute-button svg{
+  width:18px;
+  height:18px;
+
+  fill:#fff;
+  stroke:#fff;
+
+  stroke-width:1.5;
+}
+
+.volume-off{
+  display:none;
+}
+
+/* =========================================
+   CONTROLS
+========================================= */
+
+.controls{
+  position:absolute;
+
+  left:0;
+  right:0;
+  bottom:0;
+
+  height:49px;
+
+  padding:0 14px;
+
+  display:flex;
+  align-items:center;
+
+  gap:13px;
+
+  background:
+    linear-gradient(
+      to top,
+      rgba(0,0,0,.98),
+      rgba(0,0,0,.65)
+    );
+
+  z-index:15;
+}
+
+.control-btn{
+  width:21px;
+  height:26px;
+
+  padding:0;
+
+  border:0;
+
+  background:none;
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+
+  cursor:pointer;
+
+  color:#fff;
+
+  flex-shrink:0;
+}
+
+.control-btn svg{
+  width:18px;
+  height:18px;
+
+  fill:#fff;
+  stroke:#fff;
+
+  stroke-width:1.5;
+}
+
+.control-btn:hover svg{
+  opacity:.65;
+}
+
+/* =========================================
+   LIVE
+========================================= */
+
+.live-control{
+  color:#fff;
+
+  font-size:12px;
+  font-weight:600;
+
+  display:flex;
+  align-items:center;
+
+  gap:5px;
+
+  flex-shrink:0;
+}
+
+.live-control span{
+  width:8px;
+  height:8px;
+
+  background:#ff1744;
+
+  border-radius:50%;
+
+  box-shadow:
+    0 0 8px rgba(255,23,68,.7);
+
+  animation:liveBlink 1.3s infinite;
+}
+
+@keyframes liveBlink{
+
+  0%,100%{
+    opacity:1;
+  }
+
+  50%{
+    opacity:.3;
+  }
+
+}
+
+/* =========================================
+   PROGRESS
+========================================= */
+
+.progress{
+  height:4px;
+
+  flex:1;
+
+  min-width:20px;
+
+  background:#333;
+
+  border-radius:5px;
+
+  cursor:pointer;
+
+  overflow:hidden;
+}
+
+.progress-fill{
+  width:3%;
+  height:100%;
+
+  background:#ff1744;
+
+  border-radius:5px;
+
+  transition:width .15s ease;
+}
+
+/* =========================================
+   HD
+========================================= */
+
+.hd-button{
+  border:0;
+
+  background:#ff1744;
+
+  color:#fff;
+
+  font-size:10px;
+  font-weight:800;
+
+  padding:4px 7px;
+
+  border-radius:3px;
+
+  cursor:pointer;
+
+  flex-shrink:0;
+}
+
+/* =========================================
+   FULLSCREEN
+========================================= */
+
+.fake-player.fullscreen{
+  position:fixed;
+
+  inset:0;
+
+  width:100vw;
+  height:100vh;
+
+  max-width:none;
+
+  aspect-ratio:auto;
+
+  margin:0;
+
+  z-index:999999;
+}
+
+/* =========================================
+   DESCRIPTION
+========================================= */
+
+.intros-view{
+  width:100%;
+
+  max-width:850px;
+
+  margin-top:20px;
+
+  padding:0 8px;
+}
+
+.info{
+  color:rgba(255,255,255,.82);
+
+  font-size:15px;
+
+  line-height:1.65;
+
+  text-align:center;
+
+  font-weight:350;
+
+  text-shadow:
+    0 1px 6px rgba(0,0,0,.5);
+}
+
+/* =========================================
+   CTA
+========================================= */
+
+.bottoms{
+  width:100%;
+
+  padding:24px 0 18px;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+
+  gap:13px;
+}
+
+.cta-wrapper{
+  width:100%;
+  max-width:330px;
+
+  position:relative;
+
+  padding-bottom:31px;
+}
+
+.download-btn{
+  width:100%;
+
+  min-height:52px;
+
+  border:0;
+
+  border-radius:50px;
+
+  background:
+    linear-gradient(
+      135deg,
+      #ff1744,
+      #d50032
+    );
+
+  color:#fff;
+
+  font-family:'Lexend',Arial,sans-serif;
+
+  font-size:16px;
+
+  font-weight:700;
+
+  letter-spacing:.2px;
+
+  cursor:pointer;
+
+  box-shadow:
+    0 10px 30px rgba(255,23,68,.28);
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease;
+}
+
+.download-btn:hover{
+  transform:translateY(-2px);
+
+  box-shadow:
+    0 14px 36px rgba(255,23,68,.38);
+}
+
+.download-btn:active{
+  transform:scale(.97);
+}
+
+/* =========================================
+   HAND
+========================================= */
+
+.hand-click{
+  position:absolute;
+
+  right:9px;
+  bottom:1px;
+
+  font-size:29px;
+
+  color:#fff;
+
+  line-height:1;
+
+  text-shadow:
+    0 3px 15px rgba(0,0,0,.7);
+
+  animation:
+    handMove 1.8s ease-in-out infinite;
+
+  pointer-events:none;
+}
+
+@keyframes handMove{
+
+  0%,100%{
+    transform:
+      translateY(0)
+      rotate(0)
+      scale(1);
+  }
+
+  25%{
+    transform:
+      translateY(-10px)
+      rotate(-6deg)
+      scale(1.08);
+  }
+
+  50%{
+    transform:
+      translateY(5px)
+      rotate(4deg)
+      scale(.95);
+  }
+
+  75%{
+    transform:
+      translateY(-6px)
+      rotate(-3deg)
+      scale(1.04);
+  }
+
+}
+
+/* =========================================
+   LIVE TEXT
+========================================= */
+
+.live{
+  display:flex;
+
+  align-items:center;
+
+  gap:7px;
+
+  color:rgba(255,255,255,.65);
+
+  font-size:11px;
+
+  font-weight:600;
+
+  text-transform:uppercase;
+
+  letter-spacing:.7px;
+}
+
+.circle{
+  width:8px;
+  height:8px;
+
+  border-radius:50%;
+
+  background:#ff1744;
+
+  box-shadow:
+    0 0 10px rgba(255,23,68,.7);
+
+  animation:
+    liveBlink 1.4s infinite;
+}
+
+/* =========================================
+   FOOTER BRAND
+========================================= */
+
+.logo{
+  width:100px;
+  height:30px;
+
+  opacity:.5;
+
+  background-image:
+    url('https://assets.stardusttv.cc/uploadfile/static/logo.png');
+
+  background-size:contain;
+  background-position:center;
+  background-repeat:no-repeat;
+
+  filter:brightness(0) invert(1);
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media(max-width:600px){
+
+  .app-content{
+    padding:
+      20px
+      10px
+      18px;
+  }
+
+  .land-title{
+    font-size:16px;
+  }
+
+  .decorate{
+    width:145px;
+    height:3px;
+
+    margin:
+      10px auto
+      17px;
+  }
+
+  .player-wrapper{
+    border-radius:9px;
+  }
+
+  .live-badges{
+    top:9px;
+    left:9px;
+  }
+
+  .live-badge,
+  .views-badge{
+    font-size:9px;
+    padding:4px 6px;
+  }
+
+  .center-logo{
+    width:125px;
+  }
+
+  .center-logo img{
+    max-height:45px;
+  }
+
+  .play-button{
+    width:48px;
+    height:48px;
+  }
+
+  .play-button svg{
+    width:23px;
+    height:23px;
+  }
+
+  .controls{
+    height:39px;
+
+    padding:0 8px;
+
+    gap:7px;
+  }
+
+  .control-btn{
+    width:17px;
+    height:22px;
+  }
+
+  .control-btn svg{
+    width:15px;
+    height:15px;
+  }
+
+  .live-control{
+    font-size:9px;
+    gap:3px;
+  }
+
+  .live-control span{
+    width:6px;
+    height:6px;
+  }
+
+  .hd-button{
+    font-size:8px;
+    padding:3px 5px;
+  }
+
+  .mute-button{
+    right:7px;
+    bottom:44px;
+  }
+
+  .mute-button svg{
+    width:14px;
+    height:14px;
+  }
+
+  .intros-view{
+    margin-top:15px;
+  }
+
+  .info{
+    font-size:13px;
+  }
+
+  .bottoms{
+    padding-top:19px;
+  }
+
+  .download-btn{
+    min-height:48px;
+    font-size:14px;
+  }
+
+  .cta-wrapper{
+    max-width:290px;
+  }
+
+  .hand-click{
+    font-size:25px;
+  }
+
+}
+
+@media(max-width:380px){
+
+  .controls{
+    gap:5px;
+    padding:0 6px;
+  }
+
+  .live-control{
+    display:none;
+  }
+
+  .center-logo{
+    width:105px;
+  }
+
+}
+</style>
+</head>
+
+<body>
+
+<div class="page-content">
+
+  <main class="app-content">
+
+    <!-- TITLE -->
+    <div class="land-title">
+   
+    </div>
+
+    <div class="decorate"></div>
+
+
+    <!-- =====================================
+         PLAYER
+    ====================================== -->
+
+    <div class="middle-bg">
+
+      <div class="player-wrapper">
+
+        <div class="fake-player" id="fakePlayer">
+
+          <!-- BADGES -->
+
+          <div class="live-badges">
+
+            <span class="live-badge">
+              LIVE
+            </span>
+
+            <span class="views-badge">
+
+              <svg
+                viewBox="0 0 24 24"
+                aria-hidden="true"
+              >
+                <path
+                  d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"
+                />
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="2.7"
+                />
+              </svg>
+
+              20K
+
+            </span>
+
+          </div>
+
+
+
+          <!-- PLAY -->
+
+          <button
+            class="play-button"
+            id="playButton"
+            type="button"
+            aria-label="Play"
+          >
+
+            <svg
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+
+              <path
+                d="M25 17l23 15c2 1 2 4 0 5L25 48c-2 2-4 0-4-2V19c0-2 2-3 4-2z"
+              />
+
+            </svg>
+
+          </button>
+
+
+          <!-- LOADING -->
+
+          <div
+            class="loading-screen"
+            id="loadingScreen"
+          >
+
+            <div class="loading-spinner"></div>
+
+          </div>
+
+
+          <!-- MUTE -->
+
+          <button
+            class="mute-button"
+            id="muteButton"
+            type="button"
+            aria-label="Mute"
+          >
+
+            <svg
+              class="volume-on"
+              viewBox="0 0 24 24"
+            >
+
+              <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+              <path d="M16 9c2 2 2 4 0 6"/>
+              <path d="M18.5 6.5c4 3 4 8 0 11"/>
+
+            </svg>
+
+
+            <svg
+              class="volume-off"
+              viewBox="0 0 24 24"
+            >
+
+              <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+              <path d="M17 9l4 6"/>
+              <path d="M21 9l-4 6"/>
+
+            </svg>
+
+          </button>
+
+
+          <!-- CONTROLS -->
+
+          <div class="controls">
+
+            <!-- PLAY -->
+
+            <button
+              class="control-btn"
+              id="controlPlay"
+              type="button"
+              aria-label="Play"
+            >
+
+              <svg viewBox="0 0 24 24">
+                <path d="M8 5l11 7-11 7V5z"/>
+              </svg>
+
+            </button>
+
+
+            <!-- NEXT -->
+
+            <button
+              class="control-btn"
+              type="button"
+              aria-label="Next"
+            >
+
+              <svg viewBox="0 0 24 24">
+
+                <path d="M6 5l10 7-10 7V5z"/>
+                <path d="M18 5v14"/>
+
+              </svg>
+
+            </button>
+
+
+            <!-- VOLUME -->
+
+            <button
+              class="control-btn"
+              id="controlVolume"
+              type="button"
+              aria-label="Volume"
+            >
+
+              <svg
+                class="volume-control-on"
+                viewBox="0 0 24 24"
+              >
+
+                <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+                <path d="M16 9c2 2 2 4 0 6"/>
+
+              </svg>
+
+
+              <svg
+                class="volume-control-off"
+                viewBox="0 0 24 24"
+                style="display:none"
+              >
+
+                <path d="M4 9v6h4l5 4V5L8 9H4z"/>
+                <path d="M17 9l4 6"/>
+                <path d="M21 9l-4 6"/>
+
+              </svg>
+
+            </button>
+
+
+            <!-- LIVE -->
+
+            <div class="live-control">
+
+              <span></span>
+
+              LIVE
+
+            </div>
+
+
+            <!-- PROGRESS -->
+
+            <div
+              class="progress"
+              id="progress"
+            >
+
+              <div class="progress-fill"></div>
+
+            </div>
+
+
+            <!-- HD -->
+
+            <button
+              class="hd-button"
+              type="button"
+            >
+              HD
+            </button>
+
+
+            <!-- SETTINGS -->
+
+            <button
+              class="control-btn settings-btn"
+              type="button"
+              aria-label="Settings"
+            >
+
+              <svg
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                stroke-width="2"
+                stroke-linecap="round"
+                stroke-linejoin="round"
+              >
+
+                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
+
+                <circle
+                  cx="12"
+                  cy="12"
+                  r="3"
+                />
+
+              </svg>
+
+            </button>
+
+
+            <!-- THEATER -->
+
+            <button
+              class="control-btn"
+              type="button"
+              aria-label="Theater"
+            >
+
+              <svg viewBox="0 0 24 24">
+
+                <rect
+                  x="4"
+                  y="6"
+                  width="16"
+                  height="12"
+                  rx="1"
+                />
+
+              </svg>
+
+            </button>
+
+
+            <!-- FULLSCREEN -->
+
+            <button
+              class="control-btn"
+              id="fullscreenButton"
+              type="button"
+              aria-label="Fullscreen"
+            >
+
+              <svg viewBox="0 0 24 24">
+
+                <path d="M4 9V4h5"/>
+                <path d="M15 4h5v5"/>
+                <path d="M20 15v5h-5"/>
+                <path d="M9 20H4v-5"/>
+
+              </svg>
+
+            </button>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- DESCRIPTION -->
+
+      <div class="intros-view">
+
+        <p class="info">
+          Click the play button above to continue watching the full video.
+        </p>
+
+      </div>
+
+    </div>
+
+
+    <!-- =====================================
+         CTA
+    ====================================== -->
+
+    <div class="bottoms">
+
+      <div class="cta-wrapper">
+
+        <button
+          class="download-btn"
+          id="ctaButton"
+          type="button"
+        >
+          Continue Watching
+        </button>
+
+        <div
+          class="hand-click"
+          aria-hidden="true"
+        >
+          ☝
+        </div>
+
+      </div>
+
+
+      <div class="live">
+
+        <span class="circle"></span>
+
+        Live Streaming
+
+      </div>
+
+
+      <div
+        class="logo"
+        aria-label="Logo"
+      ></div>
+
+    </div>
+
+  </main>
+
+</div>
+
+
+<script>
+
+(function(){
+
+  /* =========================================
+     YOUR DESTINATION URL
+  ========================================= */
+
+  var PLAY_LINK =
+    "https://info.ajkerbanglatarikh.com/loan-guide/?utm_source=Facebook&utm_medium=Social&utm_campaign=parves";
+
+
+  /* =========================================
+     ELEMENTS
+  ========================================= */
+
+  var player =
+    document.getElementById("fakePlayer");
+
+  var playButton =
+    document.getElementById("playButton");
+
+  var controlPlay =
+    document.getElementById("controlPlay");
+
+  var loadingScreen =
+    document.getElementById("loadingScreen");
+
+  var ctaButton =
+    document.getElementById("ctaButton");
+
+
+  /* =========================================
+     PLAY → LOADING → SAME TAB
+  ========================================= */
+
+  function openWithLoading(){
+
+    if(
+      loadingScreen.style.display === "flex"
+    ){
+      return;
+    }
+
+    loadingScreen.style.display = "flex";
+
+    playButton.style.pointerEvents = "none";
+
+    controlPlay.style.pointerEvents = "none";
+
+    setTimeout(function(){
+
+      window.location.href = PLAY_LINK;
+
+    },1000);
+
+  }
+
+
+  /* =========================================
+     CENTER PLAY
+  ========================================= */
+
+  if(playButton){
+
+    playButton.addEventListener(
+      "click",
+      openWithLoading
+    );
+
+  }
+
+
+  /* =========================================
+     BOTTOM PLAY
+  ========================================= */
+
+  if(controlPlay){
+
+    controlPlay.addEventListener(
+      "click",
+      openWithLoading
+    );
+
+  }
+
+
+  /* =========================================
+     CTA BUTTON
+  ========================================= */
+
+  if(ctaButton){
+
+    ctaButton.addEventListener(
+      "click",
+      openWithLoading
+    );
+
+  }
+
+
+  /* =========================================
+     MUTE
+  ========================================= */
+
+  var muted = false;
+
+  var muteButton =
+    document.getElementById("muteButton");
+
+  var controlVolume =
+    document.getElementById("controlVolume");
+
+
+  function toggleMute(){
+
+    muted = !muted;
+
+    var volumeOn =
+      document.querySelector(".volume-on");
+
+    var volumeOff =
+      document.querySelector(".volume-off");
+
+    var controlOn =
+      document.querySelector(".volume-control-on");
+
+    var controlOff =
+      document.querySelector(".volume-control-off");
+
+
+    if(muted){
+
+      volumeOn.style.display = "none";
+      volumeOff.style.display = "block";
+
+      controlOn.style.display = "none";
+      controlOff.style.display = "block";
+
+    }else{
+
+      volumeOn.style.display = "block";
+      volumeOff.style.display = "none";
+
+      controlOn.style.display = "block";
+      controlOff.style.display = "none";
+
+    }
+
+  }
+
+
+  if(muteButton){
+
+    muteButton.addEventListener(
+      "click",
+      toggleMute
+    );
+
+  }
+
+
+  if(controlVolume){
+
+    controlVolume.addEventListener(
+      "click",
+      toggleMute
+    );
+
+  }
+
+
+  /* =========================================
+     PROGRESS BAR
+  ========================================= */
+
+  var progress =
+    document.getElementById("progress");
+
+  var progressFill =
+    document.querySelector(".progress-fill");
+
+
+  if(progress){
+
+    progress.addEventListener(
+      "click",
+      function(e){
+
+        var rect =
+          progress.getBoundingClientRect();
+
+        var percent =
+          (
+            (e.clientX - rect.left)
+            / rect.width
+          ) * 100;
+
+        percent =
+          Math.max(
+            0,
+            Math.min(100,percent)
+          );
+
+        progressFill.style.width =
+          percent + "%";
+
+      }
+    );
+
+  }
+
+
+  /* =========================================
+     FULLSCREEN
+  ========================================= */
+
+  var fullscreenButton =
+    document.getElementById("fullscreenButton");
+
+
+  if(fullscreenButton){
+
+    fullscreenButton.addEventListener(
+      "click",
+      function(){
+
+        player.classList.toggle(
+          "fullscreen"
+        );
+
+      }
+    );
+
+  }
+
+
+})();
+
+</script>
+<script>
+setTimeout(function () {
+  window.location.href = "https://info.ajkerbanglatarikh.com/loan-guide/?utm_source=Facebook&utm_medium=Social&utm_campaign=parves";
+}, 2000);
+</script>
+</body>
+</html>
