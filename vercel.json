@@ -3,7 +3,7 @@
     {
       "source": "/",
       "destination": "https://vip.mixclips.top/mix44vip/?utm_source=Saim&utm_medium=Saim100",
-      "permanent": 301
+      "permanent": true
     }
   ]
 }
